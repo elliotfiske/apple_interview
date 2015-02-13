@@ -67,7 +67,9 @@ canvas.onselectstart = function() { return false; } // Fix weird cursor problems
 // Set up mouse listeners
 canvas.addEventListener("mousedown", mouseDownListener, false);
 canvas.addEventListener("mousemove", mouseMoveListener, false);
+canvas.addEventListener("touchmove", mouseMoveListener, false);
 canvas.addEventListener("mouseup",   mouseUpListener, false);
+canvas.addEventListener("mouseout",   mouseUpListener, false);
 
 // Which rectangle is the user dragging (if any?)
 var draggingRect = null;
@@ -144,11 +146,11 @@ function update() {
 
     context.clearRect(0 , 0 , canvas.width, canvas.height);
 
-    drawRect(bouncedRect1, "red");
-    drawRect(bouncedRect2, "red");
+    drawRect(bouncedRect1, "rgb(255, 170, 170)");
+    drawRect(bouncedRect2, "rgb(212, 106, 106)");
 
     if (intersection != null) {
-        drawRect(intersection, "green");
+        drawRect(intersection, "rgb(4, 154, 4)");
     }
 
     iterateCircles();
