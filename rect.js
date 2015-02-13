@@ -23,7 +23,6 @@ function Circle(x, y, radius, alpha) {
     this.alpha = 0.4;
 }
 
-
 /**
  * rectIntersection takes in two rectangle objects and determines whether they
  *  intersect.
@@ -40,12 +39,11 @@ function rectIntersection(rectA, rectB) {
     var intersectWidth  = intersectRight - intersectLeft;
     var intersectHeight = intersectBottom - intersectTop;
 
-    if (intersectWidth > 0 && intersectHeight > 0 ) {
+    if (intersectWidth > 0 && intersectHeight > 0) {
         return new Rect(intersectLeft, intersectTop, intersectWidth, intersectHeight);
     }
     return null;
 }
-
 
 /**
  * rectContainsPoint returns true if the specified rectangle contains the point,
@@ -71,7 +69,7 @@ canvas.addEventListener("mousedown", mouseDownListener, false);
 canvas.addEventListener("mousemove", mouseMoveListener, false);
 canvas.addEventListener("touchmove", mouseMoveListener, false);
 canvas.addEventListener("mouseup",   mouseUpListener, false);
-canvas.addEventListener("mouseout",   mouseUpListener, false);
+canvas.addEventListener("mouseout",  mouseUpListener, false);
 
 // Which rectangle is the user dragging (if any?)
 var draggingRect = null;
