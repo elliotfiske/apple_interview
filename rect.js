@@ -14,7 +14,7 @@ function Rect(x, y, width, height) {
 
 /**
  * Circle class defines those funky circles that emanate out from
- *  when an intersection happens.
+ *  where an intersection happens.
  */
 function Circle(x, y, radius, alpha) {
     this.x = x;
@@ -25,10 +25,11 @@ function Circle(x, y, radius, alpha) {
 
 
 /**
- * rectIntersection takes in two rectangle objects and determines whether they intersect.
+ * rectIntersection takes in two rectangle objects and determines whether they
+ *  intersect.
  *
- * If they intersect, this function returns the rectangle that represents the area they intersect.
- *  Otherwise, it returns null.
+ * If they intersect, this function returns the rectangle that represents the area
+ *  they intersect. Otherwise, it returns null.
  */
 function rectIntersection(rectA, rectB) {
     var intersectTop    = Math.max(rectA.y,    rectB.y);
@@ -47,7 +48,8 @@ function rectIntersection(rectA, rectB) {
 
 
 /**
- * rectContainsPoint returns true if the specified rectangle contains the point, false otherwise.
+ * rectContainsPoint returns true if the specified rectangle contains the point,
+ *  false otherwise.
  */
 function rectContainsPoint(rect, point) {
     if (point.x > rect.x && point.x < rect.x2() &&
@@ -87,6 +89,9 @@ function drawRect(rect, color) {
     context.fillRect(rect.x, rect.y, rect.width, rect.height);
 }
 
+/** 
+ * Rectangles bounce when you click on em.  Iterate that animation here.
+ */
 function iterateBounciness(rect) {
    var bounceFactor = (Math.sin(rect.bounceTime) + 1) * rect.bounceTime * 0.15;
    if (rect.bounceTime > 0) {
@@ -101,14 +106,17 @@ function iterateBounciness(rect) {
    return bouncedRect;
 }
 
+/**
+ * Animate the circles that emanate out from intersections
+ */
 function iterateCircles() {
-    console.log(circles.length);
     for (var ndx = circles.length - 1; ndx >= 0; ndx--) {
         circles[ndx].radius += 2;
         circles[ndx].alpha -= 0.03;
 
         context.beginPath();
-        context.arc(circles[ndx].x, circles[ndx].y, circles[ndx].radius, 0, 2*Math.PI, false);
+        context.arc(circles[ndx].x, circles[ndx].y, 
+                    circles[ndx].radius, 0, 2*Math.PI, false);
         context.fillStyle = "rgba(255, 255, 255, " + circles[ndx].alpha + ")";
         context.fill();
 
@@ -135,7 +143,8 @@ function update() {
 
     var intersection = rectIntersection(bouncedRect1, bouncedRect2);
     if (intersection != null && !wasIntersecting) {
-        var newCircle = new Circle(intersection.x + intersection.width/2, intersection.y + intersection.height/2);
+        var newCircle = new Circle(intersection.x + intersection.width/2,
+                                   intersection.y + intersection.height/2);
         circles.push(newCircle);
         wasIntersecting = true;
     }

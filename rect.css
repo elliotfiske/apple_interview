@@ -20,3 +20,8 @@ h1 {
 h2 {
     color: rgb(64, 64, 64);
 }
+
+.gist {
+    width: 700px;
+    margin: 20px auto;
+}
